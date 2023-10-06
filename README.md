@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+  <span>Animals</span>
+</p>
 
-## Getting Started
+Animals is a project created to allow users to search for animals. The animals are obtained through the faker.js library. The UI/UX is based on Google Search.
 
-First, run the development server:
+#### Project Architecture:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This project is based on [Clean Architecture](https://www.freecodecamp.org/news/a-quick-introduction-to-clean-architecture-990c014448d2/) concepts. Each folder has its rules and doesn't have a direct dependency, then has a decoupling to turn easy maintenance. For example, the components don't have requests for data, there is a specific folder for that, to make it easy for you to change the way to get the data in the future.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The structure of the application code is robust and scalable, this makes it easy to onboard new resources by defining a common approach for the development process.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The structure is based on three rules:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<ul>
+  <li>
+All folders and files will be in the `/app` directory because this directory accepts colocation and it’s different from the `/pages` directory (old versions of Next.js) which was only for routing purposes.
+</li>
+<li>
+All the non-routes folders will be Private Folders by prefixing their name with an underscore. This tells the Next router that this folder is not part of the routes.
+</li>
+<li>
+Using a Next 13 feature called Route Groups. All routes are wrapped in a folder with parenthesis around the name so that it shows the folder is for organizational purposes (grouping folders) and should not be included in the route’s URL path.
+</li>
+</ul>
 
-## Learn More
+With these principles, The project has all required folders in the `/app` directory, and with Route Groups all routes are grouped in a (routes) folder, and with Private Folders by prefixing non-route folders with an underscore, everything is isolated.
 
-To learn more about Next.js, take a look at the following resources:
+The folders in the project have rules:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<ul>
+<li>
+<strong> Assets: </strong> contains all images, CSS files, font files, etc. Pretty much anything that isn’t code-related will be stored in this folder.
+</li>
+  <li>
+    <strong> Components: </strong> Components use [atomic design methodology](https://medium.com/@janelle.wg/atomic-design-pattern-how-to-structure-your-react-application-2bb4d9ca5f97) to improve a vision of how the interface and elements are connected also promoving scalability. All the components should be exported from index.js for a single access point.
+  </li>
+  <li>
+    <strong> Hooks: </strong> Code that repeats in two or more files, should stay in this folder to avoid redundancy and facilitate maintainability.
+  </li>
+  <li>
+    <strong> Services: </strong> It's to manage all data requests. All network calls should stay in this folder. If you need you should transform the payload here.
+  </li>
+</ul>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+#### Run this project:
 
-## Deploy on Vercel
+First, we need to install the dependencies: `npm install`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To run the project: `npm run dev`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+#### To Contribute:
+
+This project uses [git-flow](https://danielkummer.github.io/git-flow-cheatsheet) to model branches, which is needed to organize new features and code changes so the team can work together easily.
+
+To start a new feature, use: `git flow feature start NEWFEATURE`.
+
+This project uses cz-conventional-changelog to standardize commits according to the Conventional Commits methodology. To commit your feature, use: `cz`.
+
+When finishing the implementation, use: `git flow feature publish MYFEATURE`.
+
+Afterward, open a pull request and merge it in the master branch.
