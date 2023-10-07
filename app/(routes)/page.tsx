@@ -1,27 +1,51 @@
-import { Input, Header, Footer } from "@/app/_components";
+"use client";
+
+import { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
+import { Footer, Header, Input, Logo } from "@/app/_components";
 import { getUserLogo } from "@/app/_services/requests";
 
-export default async function Home() {
-  const userLogo = await getUserLogo();
+export default function Home() {
+  const router = useRouter();
+  const searchTerm = useRef();
+
+  const handleInputValue = (event: any) => {
+    searchTerm.current = event.target.value;
+  };
+
+  const handleSearch = (e: any) => {
+    e.preventDefault();
+    searchTerm.current && router.push(`/search/${searchTerm.current}`);
+  };
+
+  useEffect(() => {
+    if (!sessionStorage.getItem("Avatar")) {
+      const userLogo = getUserLogo();
+      sessionStorage.setItem("Avatar", userLogo);
+    }
+  }, []);
 
   return (
     <>
-      <Header avatar={userLogo} />
+      <Header />
       <main className="flex min-h-screen flex-col items-center justify-center">
-        <form className="flex flex-col w-screen items-center">
-          <p className="text-7xl font-bold mb-5">
-            <span className="text-blue-600">A</span>
-            <span className="text-red-500">n</span>
-            <span className="text-yellow-300">i</span>
-            <span className="text-blue-600">m</span>
-            <span className="text-green-600">a</span>
-            <span className="text-red-500">l</span>
-            <span className="text-yellow-300">s</span>
-          </p>
-          <Input />
+        <form
+          className="flex flex-col w-screen items-center"
+          onSubmit={handleSearch}
+        >
+          <Logo fontSize="text-7xl" />
+          <div className="w-5/6 lg:w-3/6 xl:w-2/6 mt-6">
+            <Input onChange={handleInputValue} value={searchTerm.current} />
+          </div>
+          <button
+            className="rounded-md bg-gray-100 py-3 px-4 mt-8"
+            type="submit"
+          >
+            Buscar
+          </button>
         </form>
+        <Footer />
       </main>
-      <Footer />
     </>
   );
 }
