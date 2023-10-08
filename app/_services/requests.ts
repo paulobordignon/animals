@@ -5,7 +5,7 @@ export function getUserLogo() {
 }
 
 export function getAnimals() {
-  const getImage = () => faker.image.animals(644, 362, true);
+  const getImage = () => faker.image.urlLoremFlickr({ category: "animals" });
   const getType = () => faker.animal.type();
   const getUrl = () => faker.internet.url();
   const getText = () => faker.lorem.sentences();

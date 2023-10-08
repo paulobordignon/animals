@@ -1,18 +1,22 @@
-import { InputHTMLAttributes } from "react";
 import Image from "next/image";
 import searchIcon from "@/app/_assets/icons/search.svg";
+import IInput from "./types";
 
-export function Input({ ...rest }: InputHTMLAttributes<HTMLInputElement>) {
+export function Input({ variation = "home", ...rest }: IInput) {
   return (
     <div>
       <Image
-        className="pointer-events-none absolute mt-3 ml-3"
+        className={`pointer-events-none absolute ${
+          variation === "home" ? "mt-4 ml-3" : "mt-2 ml-3"
+        }`}
         src={searchIcon}
         alt="search icon"
       />
       <input
         type="search"
-        className="border p-3 rounded-full w-full pl-12"
+        className={`border rounded-full w-full pl-10 ${
+          variation === "home" ? "p-3" : "p-1"
+        }`}
         {...rest}
       />
     </div>

@@ -15,7 +15,9 @@ export default function Home() {
 
   const handleSearch = (e: any) => {
     e.preventDefault();
-    searchTerm.current && router.push(`/search/${searchTerm.current}`);
+    router.push(
+      searchTerm.current ? `/search/${searchTerm.current}` : "/search"
+    );
   };
 
   useEffect(() => {
