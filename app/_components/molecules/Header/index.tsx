@@ -16,7 +16,9 @@ export function Header({
 }) {
   const router = useRouter();
   const pathname = usePathname();
-  const [searchTerm, setSearchTerm] = useState<string>(pathname.split("/")[2]);
+  const [searchTerm, setSearchTerm] = useState<string>(
+    decodeURI(pathname.split("/")[2] || "")
+  );
   const [avatar, setAvatar] = useState<string>("");
 
   const handleInputValue = (event: any) => {
@@ -50,7 +52,7 @@ export function Header({
   );
 
   return (
-    <header className="fixed w-full z-10 border">
+    <header className="fixed w-full z-10 border bg-white">
       {variation === "home" ? (
         <nav className="flex justify-between max-w-screen-xl items-center h-20 mx-auto px-5">
           <div>
@@ -63,7 +65,7 @@ export function Header({
           <div className="w-full lg:w-fit">
             <div className="flex justify-center gap-4 flex-col sm:flex-row sm:items-center sm:gap-4">
               <Link href="/">
-                <Logo fontSize="text-2xl sm:text-xl" />
+                <Logo fontSize="text-3xl sm:text-2xl" />
               </Link>
               <form
                 className="sm:w-full sm:pr-2 lg:w-fit"
