@@ -2,7 +2,7 @@
   <span>Animals</span>
 </p>
 
-Animals is a project created to allow users to search for animals. The animals are obtained through the faker.js library. The UI/UX is based on Google Search.
+Animals is a project created to allow users to search for animals. The animals are obtained through the [faker.js library](https://github.com/faker-js/faker). The UI/UX is based on Google Search.
 
 #### Project Architecture:
 
@@ -14,26 +14,26 @@ The structure is based on three rules:
 
 <ul>
   <li>
-All folders and files will be in the `/app` directory because this directory accepts colocation and it’s different from the `/pages` directory (old versions of Next.js) which was only for routing purposes.
-</li>
-<li>
-All the non-routes folders will be Private Folders by prefixing their name with an underscore. This tells the Next router that this folder is not part of the routes.
-</li>
-<li>
-Using a Next 13 feature called Route Groups. All routes are wrapped in a folder with parenthesis around the name so that it shows the folder is for organizational purposes (grouping folders) and should not be included in the route’s URL path.
-</li>
+    All folders and files will be in the `/app` directory because this directory accepts colocation and it’s different from the `/pages`  directory (old versions of Next.js) which was only for routing purposes.
+  </li>
+  <li>
+    All the non-routes folders will be Private Folders by prefixing their name with an underscore. This tells the Next router that this folder is not part of the routes.
+  </li>
+  <li>
+    Using a Next 13 feature called Route Groups. All routes are wrapped in a folder with parenthesis around the name so that it shows the folder is for organizational purposes (grouping folders) and should not be included in the route’s URL path.
+  </li>
 </ul>
 
-With these principles, The project has all required folders in the `/app` directory, and with Route Groups all routes are grouped in a (routes) folder, and with Private Folders by prefixing non-route folders with an underscore, everything is isolated.
+Using these principles, the project has all required folders in the `/app` directory, and with Route Groups all routes are grouped in a (routes) folder, and with Private Folders by prefixing non-route folders with an underscore, everything is isolated.
 
 The folders in the project have rules:
 
 <ul>
-<li>
-<strong> Assets: </strong> contains all images, CSS files, font files, etc. Pretty much anything that isn’t code-related will be stored in this folder.
-</li>
   <li>
-    <strong> Components: </strong> Components use [atomic design methodology](https://medium.com/@janelle.wg/atomic-design-pattern-how-to-structure-your-react-application-2bb4d9ca5f97) to improve a vision of how the interface and elements are connected also promoving scalability. All the components should be exported from index.js for a single access point.
+    <strong> Assets: </strong> contains all images, CSS files, font files, etc. Pretty much anything that isn’t code-related will be stored in this folder.
+  </li>
+  <li>
+    <strong> Components: </strong> Components use Atomic Design Methodology to improve a vision of how the interface and elements are connected also promoving scalability. All the components should be exported from index.ts for a single access point.
   </li>
   <li>
     <strong> Hooks: </strong> Code that repeats in two or more files, should stay in this folder to avoid redundancy and facilitate maintainability.
@@ -43,11 +43,19 @@ The folders in the project have rules:
   </li>
 </ul>
 
+#### Tests:
+
+This project has coverage of tests using the Cypress test tool, before committing you should run the tests using `npm run cypress:open` and create tests if a new feature has been implemented.
+
+To identify a component using Cypress you should use `data-cy` attribute to isolate it and avoid getting the wrong element. [See the other best practices.](https://docs.cypress.io/guides/references/best-practices)
+
 #### Run this project:
 
-First, we need to install the dependencies: `npm install`.
+The Node version recommended is `18.18.0`
 
-To run the project: `npm run dev`.
+Install the dependencies: `npm install`.
+
+Run the project: `npm run dev`.
 
 #### To Contribute:
 
