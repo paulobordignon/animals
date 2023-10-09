@@ -17,6 +17,7 @@ export function Input({ variation = "home", ...rest }: IInput) {
         className={`border rounded-full w-full pl-10 ${
           variation === "home" ? "p-3" : "p-1"
         }`}
+        data-cy="search-input"
         {...rest}
       />
     </div>

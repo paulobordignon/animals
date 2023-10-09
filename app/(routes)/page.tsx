@@ -42,6 +42,7 @@ export default function Home() {
           <button
             className="rounded-md bg-gray-100 py-3 px-4 mt-8"
             type="submit"
+            data-cy="search-button"
           >
             Buscar
           </button>

@@ -8,6 +8,7 @@ export function ResultCard({ data, handleShowDetails }: IResultCard) {
         e.stopPropagation();
         handleShowDetails(data);
       }}
+      data-cy="result-card"
     >
       <p className="text-xs text-gray-700">{data.url}</p>
       <p className="text-blue-800 text-lg my-1">{data.title}</p>
