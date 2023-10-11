@@ -7,7 +7,7 @@ import { getUserLogo } from "@/app/_services/requests";
 
 export default function Home() {
   const router = useRouter();
-  const searchTerm = useRef();
+  const searchTerm = useRef<string>();
 
   const handleInputValue = (event: any) => {
     searchTerm.current = event.target.value;
@@ -16,7 +16,9 @@ export default function Home() {
   const handleSearch = (e: any) => {
     e.preventDefault();
     router.push(
-      searchTerm.current ? `/search/${searchTerm.current}` : "/search"
+      searchTerm.current
+        ? `/search/${searchTerm.current.toLowerCase()}`
+        : "/search"
     );
   };
 

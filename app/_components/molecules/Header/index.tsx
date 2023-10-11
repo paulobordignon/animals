@@ -27,12 +27,12 @@ export function Header({
 
   const handleSearch = (e: any) => {
     e.preventDefault();
-    router.push(searchTerm ? `/search/${searchTerm}` : "/search");
+    router.push(searchTerm ? `/search/${searchTerm.toLowerCase()}` : "/search");
   };
 
   useEffect(() => {
     setAvatar(sessionStorage.getItem("Avatar") as string);
-  }, []);
+  }, [avatar]);
 
   const menuAvatarComponent = () => (
     <>

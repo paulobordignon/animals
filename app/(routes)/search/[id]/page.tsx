@@ -50,7 +50,7 @@ export default function Page({ params }: any) {
   return (
     <main onClick={handleCloseModal}>
       <Header variation={"search"} />
-      <section className="flex justify-center min-h-screen max-w-screen-xl pt-36 sm:pt-28 mx-auto px-5">
+      <section className="flex justify-center min-h-screen max-w-screen-xl mx-auto px-5 pt-36 pb-16 sm:pt-28 ">
         {!loading ? (
           <>
             {animals?.length ? (
