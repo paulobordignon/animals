@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Footer, Header, Input, Logo } from "@/app/_components";
-import { getUserLogo } from "@/app/_services/requests";
+import { getUserPic } from "@/app/_services/requests";
 
 export default function Home() {
   const router = useRouter();
@@ -24,7 +24,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!sessionStorage.getItem("Avatar")) {
-      const userLogo = getUserLogo();
+      const userLogo = getUserPic();
       sessionStorage.setItem("Avatar", userLogo);
     }
   }, []);
