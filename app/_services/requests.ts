@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 
-export function getUserLogo() {
+export function getUserPic() {
   return faker.image.avatarGitHub();
 }
 
